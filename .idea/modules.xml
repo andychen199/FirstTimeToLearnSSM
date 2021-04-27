@@ -3,8 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ideaProject.iml" filepath="$PROJECT_DIR$/.idea/ideaProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis_multi/mybatis_multi.iml" filepath="$PROJECT_DIR$/mybatis_multi/mybatis_multi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_aop/spring_aop.iml" filepath="$PROJECT_DIR$/spring_aop/spring_aop.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_ioc_anno/spring_ioc_anno.iml" filepath="$PROJECT_DIR$/spring_ioc_anno/spring_ioc_anno.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring_mvc/spring_mvc.iml" filepath="$PROJECT_DIR$/spring_mvc/spring_mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mybatis_dao/spring_mybatis_dao.iml" filepath="$PROJECT_DIR$/spring_mybatis_dao/spring_mybatis_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_mybatis_quick/spring_mybatis_quick.iml" filepath="$PROJECT_DIR$/spring_mybatis_quick/spring_mybatis_quick.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_tx/spring_tx.iml" filepath="$PROJECT_DIR$/spring_tx/spring_tx.iml" />
     </modules>
   </component>
 </project>

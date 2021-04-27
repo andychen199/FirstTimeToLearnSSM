@@ -8,7 +8,7 @@ import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 
 @Configuration
-//<context:component-scan base-package="cn.cerny"/>
+//<context:component-scan base-package="cn.cn.cerny"/>
 @ComponentScan("cn.cerny")
 //<import resource=""/>
 @Import({DataSourceConfiguration.class})

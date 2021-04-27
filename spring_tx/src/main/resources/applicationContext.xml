@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+    <context:component-scan base-package="cn.cerny"/>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/test?serverTimezone=GMT%2B8"/>
+        <property name="user" value="root"/>
+        <property name="password" value="SDC325"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+<!--    <bean id="accountDao" class="cn.cn.cerny.dao.impl.AccountDaoImpl">-->
+<!--        <property name="jdbcTemplate" ref="jdbcTemplate"/>-->
+<!--    </bean>-->
+<!--&lt;!&ndash;目标对象 内部的方法就是切点&ndash;&gt;-->
+<!--    <bean id="accountService" class="cn.cn.cerny.service.impl.AccountServiceImpl">-->
+<!--        <property name="accountDao" ref="accountDao"/>-->
+<!--    </bean>-->
+
+<!--    配置平台事务管理器-->
+    <bean id="transationManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+<!--&lt;!&ndash;通知 事务的增强&ndash;&gt;-->
+<!--<tx:advice id="txAdvice" transaction-manager="transationManager">-->
+<!--&lt;!&ndash;    设置事务的属性信息&ndash;&gt;-->
+<!--    <tx:attributes>-->
+<!--        <tx:method name="transfer" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>-->
+<!--        <tx:method name="findAll" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>-->
+<!--        <tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>-->
+<!--        <tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" timeout="-1" read-only="false"/>-->
+<!--&lt;!&ndash;        <tx:method name="*" isolation="DEFAULT" propagation="REQUIRED" timeout="-1" read-only="false"/>&ndash;&gt;-->
+<!--    </tx:attributes>-->
+<!--</tx:advice>-->
+<!--    -->
+<!--&lt;!&ndash;    配置事务的aop织入&ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.cn.cerny.service.impl.*.*(..))"/>-->
+<!--    </aop:config>-->
+
+    <tx:annotation-driven transaction-manager="transationManager"></tx:annotation-driven>
+</beans>

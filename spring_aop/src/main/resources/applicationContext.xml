@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+<!--目标对象-->
+<bean id="target" class="cn.cerny.aop.Target"></bean>
+
+<!--    切面对象-->
+    <bean id="MyAspect" class="cn.cerny.aop.MyAspect"></bean>
+
+<!--    配置织入，告诉spring框架 哪些方面（切点）需要进行哪些增强（前置、后置-->
+<aop:config>
+<!--    声明切面-->
+    <aop:aspect ref="MyAspect">
+<!--        <aop:before method="Before" pointcut="execution(public void cn.cn.cerny.aop.Target.save())"></aop:before>-->
+        <aop:before method="Before" pointcut="execution(* cn.cerny.aop.*.*(..))"></aop:before>
+    </aop:aspect>
+</aop:config>
+
+    <!--    配置组件扫描-->
+    <context:component-scan base-package="cn.cerny"/>
+</beans>

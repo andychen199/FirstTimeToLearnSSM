@@ -20,4 +20,11 @@ public class User {
         return age;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
